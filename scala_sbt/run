@@ -1,0 +1,22 @@
+###############################################
+Build command
+###############################################
+
+docker build -t shiju/scala-sbt:latest  --build-arg SCALA_VERSION=2.12.8  --build-arg SBT_VERSION=1.2.7 .
+
+###############################################
+Runi Command
+###############################################
+
+cd to the path where the project needs to be built and run (note the pwd parameter sets the project path)
+
+docker run -it --rm -v `pwd`:/project shiju/scala-sbt:latest /bin/bash
+Or 
+docker run -it --rm -v /home/shiju/workarea/scala_projects/HelloScala:/project shiju/scala-sbt:latest /bin/bash
+
+Once started
+
+sbt 
+or 
+scala
+
