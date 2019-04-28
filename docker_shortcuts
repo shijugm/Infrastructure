@@ -1,0 +1,13 @@
+RUN
+when running a container wit the run command add --name to have a userfriendly name 
+-d will run it in the background 
+-i will make it interactive
+
+STOP 
+can use the name to now stop a container
+sudo docker stop myairflow
+
+
+ATTACH
+
+
