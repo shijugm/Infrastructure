@@ -1,10 +1,10 @@
 Docker images can be downloaded from 
-docker pull puckel/docker-airflow
+sudo docker pull puckel/docker-airflow
 
 # run docker image
 #######################################
 
-docker run --name myairflow -d -p 8080:8080 -v /home/shiju/workarea/docker_images/airflow/dags/:/usr/local/airflow/dags  puckel/docker-airflow webserver
+sudo docker run --name myairflow -d -p 8080:8080 -v $DOCKER_IMAGE_PATH/airflow/dags/:/usr/local/airflow/dags  puckel/docker-airflow webserver
 
 The above command will start the airflow ui and point to the dags on the local directory
 
