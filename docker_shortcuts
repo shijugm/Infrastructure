@@ -10,4 +10,11 @@ sudo docker stop myairflow
 
 ATTACH
 
+PRUNE
+
+Stopped containers will which have been created with the name tag will fail when you try to run again.  
+To avoid that run the prune command
+
+sudo docker container prune
+
 
