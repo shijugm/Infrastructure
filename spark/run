@@ -3,7 +3,11 @@ Reference : https://towardsdatascience.com/a-journey-into-big-data-with-apache-s
 #######################################################################################
 # this is the command to build the image once the image is built this is not needed
 #######################################################################################
-docker build -t shiju/spark:latest .
+
+
+# need to check why the '.' is needed in the end of the command.
+
+sudo docker build -f $DOCKER_IMAGE_PATH/spark/Dockerfile -t shiju/spark:latest .
 
 #######################################################################################
 # Run the command 
@@ -11,26 +15,31 @@ docker build -t shiju/spark:latest .
 
 # create a network for master and slave
 #########
-docker network create spark_network
+sudo docker network create spark_network
 
 
 # Start the spark master
 ########
-docker run --rm -it --name spark-master --hostname spark-master -p 7077:7077 -p 8080:8080  --network spark_network  shiju/spark:latest /bin/sh
+sudo docker run --rm -it --name spark-master --hostname spark-master -p 7077:7077 -p 8081:8081  --network spark_network  shiju/spark:latest /bin/sh
 
 # Run this in the master
 ###
-/spark/bin/spark-class org.apache.spark.deploy.master.Master --ip `hostname` --port 7077 --webui-port 8080
+/spark/bin/spark-class org.apache.spark.deploy.master.Master --ip `hostname` --port 7077 --webui-port 8081
 
 
 # Start the spark slave
 ########
 
-docker run --rm -it --name spark-worker --hostname spark-worker --network spark_network shiju/spark:latest /bin/sh
+sudo docker run --rm -it --name spark-worker --hostname spark-worker --network spark_network shiju/spark:latest /bin/sh
 
 # Run this on the slave to register
 ###
-/spark/bin/spark-class org.apache.spark.deploy.worker.Worker --webui-port 8080 spark://spark-master:7077
+/spark/bin/spark-class org.apache.spark.deploy.worker.Worker --webui-port 8081 spark://spark-master:7077
+
+#REPEAT above slave commands for more slave nodes
+# change the name each time
+
+# spark UI : localhost:8081/
 
 
 # Refer the docker compose to finish all this in a script
