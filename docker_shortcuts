@@ -4,13 +4,21 @@ when running a container wit the run command add --name to have a userfriendly n
 -i will make it interactive
 
 STOP 
-can use the name to now stop a container
+can use the id or name to stop a container
 sudo docker stop myairflow
 
-or stop using the container id
+
+LiST Stopped containers 
+sudo docker ps -a 
+
+REMOVE a container 
+sudo docker rm myairflow
 
 
-ATTACH
+ATTACH vs EXEC??
+To connect to a running container we can use ATTACH or EXEC. 
+sudo docker exec -it myjupyter bash
+
 
 PRUNE
 

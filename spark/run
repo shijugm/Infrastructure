@@ -20,7 +20,7 @@ sudo docker network create spark_network
 
 # Start the spark master
 ########
-sudo docker run --rm -it --name spark-master --hostname spark-master -p 7077:7077 -p 8081:8081  --network spark_network  shiju/spark:latest /bin/sh
+sudo docker run --rm -it --name spark-master --hostname spark-master -p 7077:7077 -p 8081:8081  --network spark_network  shiju/spark:latest /bin/bash
 
 # Run this in the master
 ###
@@ -30,7 +30,7 @@ sudo docker run --rm -it --name spark-master --hostname spark-master -p 7077:707
 # Start the spark slave
 ########
 
-sudo docker run --rm -it --name spark-worker --hostname spark-worker --network spark_network shiju/spark:latest /bin/sh
+sudo docker run --rm -it --name spark-worker --hostname spark-worker --network spark_network shiju/spark:latest /bin/bash
 
 # Run this on the slave to register
 ###
@@ -38,6 +38,11 @@ sudo docker run --rm -it --name spark-worker --hostname spark-worker --network s
 
 #REPEAT above slave commands for more slave nodes
 # change the name each time
+
+
+# create a node to submit the job. This container is not registered as a worker node
+sudo docker run --rm -it --network spark_network --name spark-submit-driver -v  /home/shiju/workarea/git_repositories/spark_python:/src -v  /home/shiju/workarea/git_repositories/datasets:/data shiju/spark:latest  /bin/bash
+
 
 # spark UI : localhost:8081/
 

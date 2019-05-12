@@ -1,0 +1,5 @@
+sudo docker run --name myjupyter  -it --rm -p 8888:8888 jupyter/pyspark-notebook
+
+#Pending : Mount the git project on the local directory to the container 
+
+#jupyter notebook will be available on 8888
