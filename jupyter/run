@@ -1,4 +1,4 @@
-sudo docker run --name myjupyter  -it --rm -p 8888:8888 jupyter/pyspark-notebook
+sudo docker run --name myjupyter  -it --rm -p 8888:8888  -v  /home/shiju/workarea/git_repositories/spark_python:/src -v  /home/shiju/workarea/git_repositories/spark_python/examples:/examples jupyter/pyspark-notebook
 
 #Pending : Mount the git project on the local directory to the container 
 

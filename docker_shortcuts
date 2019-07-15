@@ -1,3 +1,10 @@
+Repositories
+*******************************
+sudo docker images
+
+CONTAINERS
+*******************************
+
 RUN
 when running a container wit the run command add --name to have a userfriendly name 
 -d will run it in the background 
@@ -8,6 +15,9 @@ can use the id or name to stop a container
 sudo docker stop myairflow
 
 
+LIST containers 
+sudo docker container list
+
 LiST Stopped containers 
 sudo docker ps -a 
 
@@ -17,7 +27,7 @@ sudo docker rm myairflow
 
 ATTACH vs EXEC??
 To connect to a running container we can use ATTACH or EXEC. 
-sudo docker exec -it myjupyter bash
+sudo docker exec -it container_name bash
 
 
 PRUNE
