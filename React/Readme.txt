@@ -1,6 +1,7 @@
 Start the docker image for REACT dev
+# verify if ~/workarea/React is the local machine workarea
 
-docker run -it  -p 8000:8000 -p 3000:3000 --name react-dev reactdev  /bin/bash
+docker run -it  -p 8000:8000 -p 3000:3000 -v ~/workarea/React/:/workarea/React --name react-dev reactdev  /bin/bash
 
 If the docker image doesnt exist create a new one
 # get a new ubuntu image
@@ -26,6 +27,10 @@ pip3 install hug --upgrade
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.1/install.sh | bash
 nvm install node
 nvm use node
+
+# Create the working directory for React
+
+mkdir -p workarea/React
 
 # exit container and save image.
 #react-dev is the container name and reactdev is the image name
