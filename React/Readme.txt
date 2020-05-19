@@ -28,8 +28,10 @@ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.1/install.sh | b
 nvm install node
 nvm use node
 
-# Create the working directory for React
+# install burger-menu for sidebar
+npm install react-burger-menu --save
 
+# Create the working directory for React
 mkdir -p workarea/React
 
 # exit container and save image.
