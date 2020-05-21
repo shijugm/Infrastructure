@@ -31,10 +31,13 @@ nvm use node
 # install burger-menu for sidebar
 npm install react-burger-menu --save
 
+# Router 
+npm install --save react-router-dom
+
 # Create the working directory for React
 mkdir -p workarea/React
 
-# exit container and save image.
+# exit container and save image. ( ctrl+p+q)
 #react-dev is the container name and reactdev is the image name
 
 docker commit -m "react basic-npm,hug" -a "shijum" react-dev reactdev
