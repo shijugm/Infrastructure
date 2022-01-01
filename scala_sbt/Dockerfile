@@ -9,6 +9,7 @@ FROM  openjdk:8-jre-alpine
 
 ARG SCALA_VERSION
 ARG SBT_VERSION
+ARG LOCAL_USER
 
 ENV SCALA_VERSION ${SCALA_VERSION:-2.12.8}
 ENV SBT_VERSION ${SBT_VERSION:-1.2.7}
@@ -30,6 +31,13 @@ RUN \
   ln -s /usr/local/sbt/bin/* /usr/local/bin/ && \
   sbt sbt-version || sbt sbtVersion || true
 
-WORKDIR /local
+RUN addgroup --system $LOCAL_USER 
+
+RUN adduser --system $LOCAL_USER --ingroup $LOCAL_USER
+
+USER $LOCAL_USER:$LOCAL_USER
+
+
+WORKDIR /source
 
 CMD "/usr/local/bin/sbt"
