@@ -7,7 +7,7 @@ Reference : https://towardsdatascience.com/a-journey-into-big-data-with-apache-s
 
 # need to check why the '.' is needed in the end of the command.
 
-docker build  -t shiju/spark:latest .
+docker build  -t shiju/spark:2.3.0 .
 
 #######################################################################################
 # Run the command 
@@ -20,7 +20,7 @@ docker build  -t shiju/spark:latest .
 
 # Start the spark master
 ########
- docker run --rm -it --name spark-master --hostname spark-master -p 7077:7077 -p 8081:8081  --network spark_network -v /home/shijugm/workarea/git/:/source  shiju/spark:latest /bin/bash
+ docker run --rm -it --name spark-master --hostname spark-master -p 7077:7077 -p 8081:8081  --network spark_network -v /home/shijugm/workarea/git/:/source  shiju/spark:2.3.0 /bin/bash
 
 # Run this in the master
 ###
@@ -30,7 +30,7 @@ docker build  -t shiju/spark:latest .
 # Start the spark slave
 ########
 
- docker run --rm -it --name spark-worker --hostname spark-worker --network spark_network -v /home/shijugm/workarea/git/:/source shiju/spark:latest /bin/bash
+ docker run --rm -it --name spark-worker --hostname spark-worker --network spark_network -v /home/shijugm/workarea/git/:/source shiju/spark:2.3.0 /bin/bash
 
 # Run this on the slave to register
 ###
@@ -41,7 +41,7 @@ docker build  -t shiju/spark:latest .
 
 
 # create a node to submit the job. This container is not registered as a worker node
- docker run --rm -it --network spark_network --name spark-submit-driver -v  /home/shijugm/workarea/git/:/source -v  /home/shiju/workarea/git_repositories/datasets:/data shiju/spark:latest  /bin/bash
+ docker run --rm -it --network spark_network --name spark-submit-driver -v  /home/shijugm/workarea/git/:/source -v  /home/shiju/workarea/git_repositories/datasets:/data shiju/spark:2.3.0  /bin/bash
 
 
 # spark UI : localhost:8081/
